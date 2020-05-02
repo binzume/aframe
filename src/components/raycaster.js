@@ -106,7 +106,9 @@ module.exports.Component = registerComponent('raycaster', {
     }
 
     if (!data.showLine && oldData.showLine) {
-      el.removeAttribute('line');
+      el.setAttribute('line', 'visible', false);
+    } else if (data.showLine && !oldData.showLine) {
+      el.setAttribute('line', 'visible', true);
     }
 
     if (data.objects !== oldData.objects && !OBSERVER_SELECTOR_RE.test(data.objects)) {
